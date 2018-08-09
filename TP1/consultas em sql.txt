@@ -1,0 +1,35 @@
+Consultas em SQL
+
+6)
+
+a)
+
+SELECT * FROM Reviews ORDER BY helpful DESC, votes DESC LIMIT 5;
+
+SELECT * FROM Reviews ORDER BY helpful DESC, votes LIMIT 5;
+
+
+c)
+
+select asin,date, avg(rating) as media from reviews group by asin, date order by date;
+
+
+d)
+
+select asin, title, groupp, salesrank from product where groupp='Book' order by salesrank desc limit 10;
+
+select asin, title, groupp, salesrank from product where groupp='DVD' order by salesrank desc limit 10;
+
+select asin, title, groupp, salesrank from product where groupp='Video' order by salesrank desc limit 10;
+
+select asin, title, groupp, salesrank from product where groupp='Music' order by salesrank desc limit 10;
+
+
+e)
+
+Select ASIN, AVG(helpful) AS media FROM Reviews group by asin ORDER BY media DESC LIMIT 10;
+
+
+f) 
+
+select M.name,V.avghelp from (select asin, avg(helpful) as avghelp from reviews group by asin) as V join (select name, asin from categories group by asin,name) as M on M.asin = V.asin order by V.avghelp DESC limit 5;

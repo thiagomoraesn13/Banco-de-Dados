@@ -1,0 +1,18 @@
+Universidade Federal Do Amazonas
+Insituto de Computação
+Banco de Dados 1
+Trabalho Prático 1
+Aluno: Edwin Juan Lopes Barboza Monteiro
+Matrícula: 21453380
+Aluno: Thiago Moraes
+Matrícula: 21452625
+
+Esquemas em SQL
+
+CREATE TABLE Product (ASIN char(10) PRIMARY KEY, TITLE varchar NOT NULL, GROUPP varchar NOT NULL, SALESRANK integer NOT NULL, AVG_RATING real NOT NULL, TOTAL_REVIEWS integer NOT NULL);
+
+CREATE TABLE Similarr (ASIN char(10) NOT NULL, RELATED_ASIN char(10) NOT NULL, FOREIGN KEY (ASIN) REFERENCES Product (ASIN), PRIMARY KEY (ASIN, RELATED_ASIN));
+
+CREATE TABLE Categories (ASIN char(10) NOT NULL, ID integer NOT NULL, NAME varchar NOT NULL, FOREIGN KEY (ASIN) REFERENCES Product (ASIN), PRIMARY KEY (ASIN, ID));
+
+CREATE TABLE Reviews (ID SERIAL PRIMARY KEY, ASIN char(10) NOT NULL, DATE date NOT NULL, CUSTOMER varchar NOT NULL, RATING integer NOT NULL, VOTES integer NOT NULL, HELPFUL integer NOT NULL, FOREIGN KEY (ASIN) REFERENCES Product (ASIN));
